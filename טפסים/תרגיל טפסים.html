@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        body {
+            direction: rtl;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        סיסמה:<input type="password" id="pass" name="pass" size="5" maxlength="5" onblur="checkPassword();" />
+        הכנס שם פרטי:<input type="text" id="fname" name="name" onfocus="redME()" onblur="isFull(0);" />
+        הכנס שם משפחה:<input type="text" id="lname" name="name" onfocus="redME()" onblur="isFull(1);" />
+        <input type="button" value="add name" onclick="addName()" />
+        <select id="list" dir="rtl">
+            
+        </select>
+        <select id="s">
+            <option name="Bgcolor" value="yellow" >צהוב</option>
+            <option name="Bgcolor" value="red" >אדום</option>
+            <option name="Bgcolor" value="pink" >ורוד</option>
+        </select>
+    </form>
+    <a href="דף הבית.html">דף הבית.html</a>
+    <script type="text/javascript">
+        let i;
+        var txt = document.getElementsByName("name");
+        var apt;
+        var btn = document.getElementById("list");
+        function checkPassword() {
+            var obg = document.getElementById('pass');
+            if (obg.value != "12345") {
+                alert("שגויה סיסמא!");
+                obg.select();
+            }
+        }
+        function redME() {
+            event.currentTarget.style.border = "2px red dotted"
+        }
+        function isFull(i) {
+            if (txt[i].value == "" || txt[i].value == "you must to write") {
+                txt[i].value = "you must to write";
+                event.currentTarget.style.border = "2px red dotted";
+                event.currentTarget.style.color = "red";            }
+            else {
+                event.currentTarget.style.border = "darkcyan 1px solid";
+                event.currentTarget.style.color = "black";
+            }
+
+        }
+        let arr = document.getElementById("s");
+        arr.addEventListener("change", changeBgColor);
+        function changeBgColor() {
+            console.log("en");
+            switch (event.target.value) {
+                case "yellow": document.bgColor = "yellow"; break;
+                case "red": document.bgColor = "red"; break;
+                case "pink": document.bgColor = "pink"; break;
+            }
+        }
+        function addName() {
+            apt = document.createElement("aption");
+            apt.textContent = document.getElementById("fname").value;
+            btn.appendChild(apt);
+            console.log(document.getElementById("fname").value);
+
+        }
+    </script>
+
+</body>
+</html>

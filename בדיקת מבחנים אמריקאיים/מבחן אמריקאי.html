@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <form>
+        <select id="check">
+            <option value="2">
+                א
+            </option>
+            <option value="3">
+                ב
+            </option>
+            <option value="4">
+                ג
+            </option>
+        </select>
+        <div id="d">
+
+        </div>
+    </form>
+    <input type="button" value="check" onclick="check()" />
+    <input type="button" value="reset" onclick="reset()" />
+    <a href="דף הבית.html">דף הבית</a>
+    <script>
+        let x, p, br, mark, arr, t, place, arr1, r, c;
+        x = document.getElementById("check");
+        x.addEventListener("change", func);
+        place = [];
+        //בניית המבחן
+        function func() {
+            document.getElementById("d").innerHTML = "";
+            arr = [];
+            //בניית התרגילים לכתיבת התשובה הנכונה 
+            for (var i = 0; i < 5; i++) {
+                p = document.createElement("p");
+                //הגרלת המספרים והסימן
+                var x = Math.floor(Math.random() * ((event.target.value - 1) * 10)) + 1;
+                var y = Math.floor(Math.random() * ((event.target.value - 1) * 10)) + 1;
+                var h = Math.floor(Math.random() * event.target.value) + 1;
+                switch (h) {
+                    //בדיקת הסימן המתאים
+                    case 1: p.innerHTML += x + "+" + y + "=";
+                        arr[i] = x + y; break;
+                    case 2: p.innerHTML += Math.max(x, y) + "-" + Math.min(x, y) + "=";
+                        arr[i] = Math.max(x, y) - Math.min(x, y); break;
+                    case 3: p.innerHTML += x + "*" + y + "=";
+                        arr[i] = x * y; break;
+                    case 4: p.innerHTML += Math.max(x, y) + "/" + Math.min(x, y) + "=";
+                        arr[i] = Math.max(x, y) / Math.min(x, y); break;
+                }
+                //יצירת תיבות הטקסט
+                t = document.createElement("input");
+                t.setAttribute("type", "text");
+                t.id = "t" + (i + 1);
+                p.appendChild(t);
+                document.getElementById("d").appendChild(p);
+            }
+            arr1 = [];
+            for (var i = 0; i < 5; i++) {
+                //יצירת התרגילים לבחירת התשובה הנכונה
+                p = document.createElement("p");
+                p.id = "tar" + (i + 1);
+                x = Math.floor(Math.random() * ((event.target.value - 1) * 10)) + 1;
+                y = Math.floor(Math.random() * ((event.target.value - 1) * 10)) + 1;
+                h = Math.floor(Math.random() * event.target.value) + 1;
+                switch (h) {
+                    case 1: p.innerHTML += x + "+" + y + "=";
+                        arr1[i] = x + y; break;
+                    case 2: p.innerHTML += Math.max(x, y) + "-" + Math.min(x, y) + "=";
+                        arr1[i] = Math.max(x, y) - Math.min(x, y); break;
+                    case 3: p.innerHTML += x + "*" + y + "=";
+                        arr1[i] = x * y; break;
+                    case 4: p.innerHTML += Math.max(x, y) + "/" + Math.min(x, y) + "=";
+                        arr1[i] = Math.max(x, y) / Math.min(x, y); break;
+                }
+                document.getElementById("d").appendChild(p);
+                place[i] = Math.floor(Math.random() * 3) + 1;
+                for (var j = 1; j <= 3; j++) {
+                    //יצירת כפתורי הרדיו לבחירת התשובה
+                    r = document.createElement("input");
+                    r.setAttribute("type", "radio");
+                    r.name = "r" + i;
+                    r.id = "r" + j;
+                    r.className = "r" + i;
+                    if (j == place[i]) {
+                        //הכנסת התשובה הנכונה
+                        r.value = arr1[i];
+                        document.getElementById("d").appendChild(r);
+                        document.getElementById("d").innerHTML += arr1[i] + "<br>";
+                    }
+                    else {
+                        //הכנסת התשובות האחירות ובדיקה שהם לא שוות לתשובה האמיתית
+                        //(שלא הגרילו אותו כבר  לא בדקתי כי זה לא כזה נורא וזה סתם להוסיף משתנים)
+                        e = Math.floor(Math.random() * 40) + 1;
+                        while (e == arr1[i]) {
+                            e = Math.floor(Math.random() * 40) + 1;
+                        }
+                        r.value = e;
+                        document.getElementById("d").appendChild(r);
+                        document.getElementById("d").innerHTML += e + "<br>";
+                    }
+                }
+            }
+        }
+        //בדיקת המבחן
+        function check() {
+            mark = 0;
+            for (var i = 1; i < 6; i++) {
+                //בדיקה אם התשובה שווה לערך שהוכנס - התשובה נכונה, תוספת 10 נק וסימון ירוק 
+                //ואם לא סימון אדום
+                if (arr[i - 1] == document.getElementById("t" + i).value) {
+                    document.getElementById("t" + i).style.borderColor = "lightgreen";
+                    mark += 10;
+                }
+                else
+                    document.getElementById("t" + i).style.borderColor = "red";
+            }
+            for (var i = 0; i < 5; i++) {
+                //הכנסה של כפתורי הרדיו בתרגיל זה למערך
+                c = document.querySelectorAll(".r" + i);
+                //בדיקה אם הערך של המיקום הזה זו התשובה הנכונה והאם הוא נבחר ע"י התלמיד
+                //אם כן שוב תוספת 10 נק וסימון ירוק אם לא סימון אדום
+                if (c[place[i] - 1].value == arr1[i] && c[place[i] - 1].checked == true) {
+                    mark += 10;
+                    document.getElementById("tar" + (i + 1)).style.color = "lightgreen";
+                }
+                else
+                    document.getElementById("tar" + (i + 1)).style.color = "red";
+            }
+            //הדפסת הציון
+            alert("your mark is: " + mark);
+        }
+        //איפוס המבחן - מחיקת התשובות, לא יצירת מבחן חדש
+        function reset() {
+            for (var i = 1; i < 6; i++) {
+                //מחיקת התשובות הכתובות
+                document.getElementById("t" + i).value = "";
+                document.getElementById("t" + i).style = "none";
+            }
+            for (var i = 1; i < 6; i++) {
+                //ניסיתי להוריד את הבחירה של הכפתור אך לא הצלחתי
+                document.getElementById("tar" + i).style = "none";
+                document.getElementById("r" + place[i]).checked = false;
+            }
+        }
+    </script>
+</body>
+</html>

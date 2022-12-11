@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <Script language="javascript">
+        var x;
+        function targil() {
+          
+            x = eval(document.f1.tar.value);
+            document.f1.tar.value = x;
+        }
+    </Script>
+</head>
+<body>
+    <form name=f1>
+        <br>
+        כתוב תרגיל
+        <br>
+        <input type="text" name="tar" size=20><br>
+        <input type="button" name="do" value="write a full  targil" onclick="targil()">
+        <input type="reset" name="clean" value="reset">
+    </form>
+    <a href="דף הבית.html">דף הבית.html</a>
+</body>
+</html >

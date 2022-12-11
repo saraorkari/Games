@@ -1,0 +1,15 @@
+﻿body {
+    margin:0 30px;
+}
+input{
+    width:50px;
+    height:50px;
+    color:lightseagreen;
+    background-color:lightblue;
+}
+#play {
+    width: 200px;
+    height: 100px;
+    color: lightseagreen;
+    background-color: lightblue;
+}

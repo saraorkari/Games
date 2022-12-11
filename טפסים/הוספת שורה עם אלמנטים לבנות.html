@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        p {
+            padding: 10px;
+        }
+
+        form {
+            width: 50%;
+            border: 4px solid teal;
+        }
+
+        input {
+            padding: 10px;
+            border: 2px solid blue;
+            border-radius: 25px;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <div>
+            <p id="p1"> שם מוצר <input type="text" name="namep1"> </p>
+            <p id="p2"> כמות להזמנה  <input type="number" name="amount1"></p>
+        </div>
+        <input type="button" onclick="addRow()" name="btn" value="add a product">
+        <input type="submit" value="submit">
+    </form>
+    <a href="דף הבית.html">דף הבית.html</a>
+    <script>
+        num = 1;
+        let d = document.getElementsByTagName("div");
+        function addRow() {
+            num++;
+            let ee = document.createElement("p");
+            let tt = document.createTextNode("שם מוצר");
+            let pi = document.createElement("input");
+            pi.setAttribute("name", "namep" + num);
+            ee.appendChild(tt);
+            d[0].appendChild(ee);
+            let y = document.getElementsByTagName("p");
+            y[y.length - 1].appendChild(pi);
+
+            let e = document.createElement("p");
+            let t = document.createTextNode("כמות להזמנה");
+            let pw = document.createElement("input");
+            pw.setAttribute("name", "amount" + num);
+            e.appendChild(t);
+            d[0].appendChild(e);
+            let yy = document.getElementsByTagName("p");
+            yy[yy.length - 1].appendChild(pw);
+        }
+    </script>
+</body>
+</html>

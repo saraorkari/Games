@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <form>
+        <input type="text" id="txt1" />
+        <input type="button" onclick="myRand()" value="בדיקה" />
+        <div id="div1"></div>
+        <a href="דף הבית.html">דף הבית.html</a>
+        <script language="javascript">
+            var rand = Math.floor(Math.random() * 10 + 1), count = 0;
+            function myRand() {
+                count++;
+                if (document.getElementById("txt1").value == rand) {
+                    document.getElementById("div1").innerHTML = "ניצחון! ";
+                    document.getElementById("div1").innerHTML += count + " ניחושים";
+                }
+                else
+                    if (document.getElementById("txt1").value > rand) {
+                        document.getElementById("div1").innerHTML = "קטן יותר";
+                    }
+                    else
+                        document.getElementById("div1").innerHTML = "גדול יותר";
+            }
+        </script>
+    </form>
+</body>
+</html>
