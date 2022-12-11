@@ -1,0 +1,74 @@
+﻿body {
+    direction: rtl;
+    text-align: -webkit-center;
+    font-size: x-large;
+    background-image: url(רקע.png);
+}
+/*#b {
+    margin: 16px;
+    padding: 10px;
+    color: cadetblue;
+    border: snow;
+}*/
+p {
+    color: darkred;
+    font-size: 32px;
+    font-family: Jokerman;
+}
+#time {
+    direction: ltr;
+    width: 85px;
+    height: 85px;
+    text-align: center;
+    font-size: 70px;
+    position: unset;
+    margin-top: -152px;
+    font-family: Jokerman;
+    color: darkred;
+}
+#sho {
+    font-size:x-large;
+
+}
+.cls {
+    text-align: center;
+    width: 180px;
+    height: 70px;
+    color: darkred;
+    background-color: #f9d1b000;
+    padding: 10px;
+    border: 4px inset darkred;
+    border-radius: 25px;
+    margin-left: 0px;
+    margin-top: 78px;
+    font-size: 25px;
+    font-family: Jokerman;
+}
+#h {
+    margin-left: 70px;
+}
+h2 {
+    color: darkred;
+    font-size: 32px;
+    font-family: Jokerman;
+}
+h1 {
+    color: darkred;
+    font-size: 50px;
+    font-family: Jokerman;
+}
+#kotert {
+  
+    color: darkred;
+    font-size: 100px;
+    font-family: Jokerman;
+}
+#end{
+    margin:100px;
+}
+input [type=radio] {
+    background-color: #f8d2ad;
+    border: darkred;
+    color: darkred;
+    cursor: auto;
+}
